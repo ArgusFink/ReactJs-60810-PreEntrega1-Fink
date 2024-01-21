@@ -1,0 +1,22 @@
+
+.nameAndNavBar {
+
+    display: flex;
+
+}
+
+.items {
+
+    display: flex;    
+    align-items: center;
+    justify-content: center;
+    margin: 12px;
+    
+  }
+
+#logo {
+
+    width: 160px;
+    
+}
+
