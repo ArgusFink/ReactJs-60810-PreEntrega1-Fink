@@ -1,17 +1,20 @@
 import React from 'react'
 import CartWidget from '../CartWidget/CartWidget'
 import "./NavBar.css"
+import Contador from '../Count/ItemCount'
 
 const NavBar = () => {
 
     return (
         <>
 
-            <img id = "logo" src="../public/logo.png" alt="" />
-            
-            <div className = "nameAndNavBar">
-                
-            <h1>Play In The Sky</h1>
+            <div className="nameAndNavBar">
+
+                <img id="logo" src="../public/logo.png" alt="" />
+
+
+
+                <h1>Play In The Sky</h1>
 
                 <ul className="items">
 
@@ -22,9 +25,9 @@ const NavBar = () => {
 
                 </ul>
 
-            </div>
+                <CartWidget />
 
-            <CartWidget />
+            </div>
 
         </>
     )

@@ -6,9 +6,13 @@ const CartWidget = () => {
 
         <>
 
-            <img className = "carrito" src="./carrito.png" alt="" />
+            <div className="elementCart">
 
-            <p>0</p>
+                <img className="carrito" src="./carrito.png" alt="" />
+
+                <p>0</p>
+                
+            </div>
 
         </>
 

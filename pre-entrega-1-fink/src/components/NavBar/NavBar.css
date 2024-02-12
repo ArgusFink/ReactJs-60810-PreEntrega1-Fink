@@ -2,6 +2,7 @@
 .nameAndNavBar {
 
     display: flex;
+    align-items: center;
 
 }
 
