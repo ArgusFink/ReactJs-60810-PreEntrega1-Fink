@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 
-const Contador = () => {
+const Contador = ({inicial, stock}) => {
 
-    const [contador, setContador] = useState(10)
+    const [contador, setContador] = useState(1)
 
     const agregar = () => {
 
@@ -12,14 +12,14 @@ const Contador = () => {
 
     const restar = () => {
 
-        if (contador > 1) {
+        if (contador > inicial) {
             setContador(contador - 1)
         }
     }
 
     const sumar = () => {
         
-        if (contador < 10){
+        if (contador < stock){
             setContador(contador + 1)
         }
 

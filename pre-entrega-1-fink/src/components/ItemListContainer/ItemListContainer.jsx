@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import "./ItemListContainer.css"
+
 
 const ItemListContainer = ({ greeting }) => {
 
@@ -30,18 +32,30 @@ const ItemListContainer = ({ greeting }) => {
     <div>
 
       <h2>{greeting}</h2>
+      <br/><br/><br/>
 
       {articulos.length == 0 ? <p>ACTUALIZANDO</p>
         :
-        articulos.map((articulo, index) => {
+        
+        // articulos.map((articulo, indice) => {
 
+        articulos.map((articulo) => {
+ 
           return (
 
-            <div className = "arts">
-              <h3>{articulo.nombre}</h3>
-              <p>{articulo.detalle}</p>
+            <div className = "arts" key = {articulo.cod} >
+              <h2>{articulo.nombre}</h2>
+
+              {/* <img src={articulo.img} alt= "Imágen del artículo" />               */}
+
+              <img src={articulo.img} alt= {articulo.nombre} />
+
+              {/* <p>{articulo.detalle}</p>
               <p>{articulo.precio}</p>
-              <p>{articulo.stock}</p>
+              <p>{articulo.stock}</p> */}
+
+              <br/><br/><br/>
+                    
             </div>          
           )
         })
