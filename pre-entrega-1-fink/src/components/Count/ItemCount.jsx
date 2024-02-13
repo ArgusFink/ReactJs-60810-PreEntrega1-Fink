@@ -6,8 +6,6 @@ const Contador = ({inicial, stock}) => {
 
     const agregar = () => {
 
-        //"Comentario"
-
     }
 
     const restar = () => {
@@ -28,11 +26,6 @@ const Contador = ({inicial, stock}) => {
     useEffect(
 
         () => {
-
-            // const intervalId = setInterval (()=> {
-            //     setContador ((prevContador) => prevContador + 1 )
-            // }, 2000) 
-
         }, []
     )
 

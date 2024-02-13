@@ -37,8 +37,6 @@ const ItemListContainer = ({ greeting }) => {
       {articulos.length == 0 ? <p>ACTUALIZANDO</p>
         :
         
-        // articulos.map((articulo, indice) => {
-
         articulos.map((articulo) => {
  
           return (
@@ -46,13 +44,7 @@ const ItemListContainer = ({ greeting }) => {
             <div className = "arts" key = {articulo.cod} >
               <h2>{articulo.nombre}</h2>
 
-              {/* <img src={articulo.img} alt= "Imágen del artículo" />               */}
-
               <img src={articulo.img} alt= {articulo.nombre} />
-
-              {/* <p>{articulo.detalle}</p>
-              <p>{articulo.precio}</p>
-              <p>{articulo.stock}</p> */}
 
               <br/><br/><br/>
                     
