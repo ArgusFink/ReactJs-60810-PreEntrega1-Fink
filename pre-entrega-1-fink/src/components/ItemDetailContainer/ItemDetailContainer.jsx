@@ -17,7 +17,7 @@ const ItemDetailContainer = ({cod}) => {
                 setArticulo(art)
 
             } catch (error) {
-
+ 
             }
 
         }
