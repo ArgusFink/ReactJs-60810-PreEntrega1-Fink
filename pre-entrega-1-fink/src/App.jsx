@@ -5,7 +5,8 @@ import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Contador from './components/Count/ItemCount';
-// import Corrupt from './components/Corrupt/Corrupt';
+import Failed from './components/Failed';
+
 
 
 function App() {
@@ -22,11 +23,11 @@ function App() {
 
           <Route path='/' element={<ItemListContainer greeting={"Sean bienvenidos a nuestro e-Commerce"} />} />
 
-          <Route path='/detalle' element={<ItemDetailContainer cod={5} />} />
-
-          <Route path='/contador' element={<Contador inicial={54} stock={7} />} />
-
-          {/* <Route path='*' element={<Corrupt/>} /> */}
+          <Route path='/categoria/:catCod' element={<ItemListContainer />} />
+ 
+          <Route path='/detalle/:codArt' element={<ItemDetailContainer />} />
+          
+          <Route path='*' element={<Failed />} />
 
         </Routes>
 

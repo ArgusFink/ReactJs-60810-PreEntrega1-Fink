@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import "./ItemListContainer.css"
+import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+
 
 
 const ItemListContainer = ({ greeting }) => {
 
   const [articulos, setArticulos] = useState([]);
+
+  const {catCod} = useParams();
 
   useEffect(() => {
 
@@ -14,7 +19,17 @@ const ItemListContainer = ({ greeting }) => {
 
         const response = await fetch("./articulos.json")
         const data = await response.json()
-        setArticulos(data)
+
+        if (catCod) {
+
+          const filterArts = data.filter((p) => p.categoria == catCod)
+          setArticulos(filterArts)
+ 
+        } else {
+
+          setArticulos(data)
+
+        }
 
       } catch (error) {
 
@@ -24,7 +39,7 @@ const ItemListContainer = ({ greeting }) => {
 
     fetchData()
 
-  }, [])
+  }, [catCod])
 
 
 
@@ -32,28 +47,31 @@ const ItemListContainer = ({ greeting }) => {
     <div>
 
       <h2>{greeting}</h2>
-      <br/><br/><br/>
+      <br /><br /><br />
 
       {articulos.length == 0 ? <p>ACTUALIZANDO</p>
         :
-        
+
         articulos.map((articulo) => {
- 
+
           return (
 
-            <div className = "arts" key = {articulo.cod} >
-              <h2>{articulo.nombre}</h2>
+            <Link to={`/detalle/${articulo.cod}`} >
 
-              <img src={articulo.img} alt= {articulo.nombre} />
+              <div className="arts" key={articulo.cod} >
+                <h2>{articulo.nombre}</h2>
 
-              <br/><br/><br/>
-                    
-            </div>          
+                <img src={articulo.img} alt={articulo.nombre} />
+
+                <br /><br /><br />
+
+              </div>
+
+            </Link>
+
           )
         })
       }
-
-
     </div>
   )
 }
