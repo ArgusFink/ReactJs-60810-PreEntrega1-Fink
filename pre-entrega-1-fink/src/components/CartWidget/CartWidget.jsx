@@ -1,17 +1,26 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./CartWidget.css"
+import { CartContext } from '../../context/CartContext'
+import { NavLink } from 'react-router-dom'
 
 const CartWidget = () => {
+
+    const { unitsProds} = useContext(CartContext)
+
     return (
 
         <>
 
             <div className="elementCart">
 
-                <img className="carrito" src="./carrito.png" alt="" />
+                <NavLink to={'/cart'}><img className="carrito" src="../../carrito.png" alt="" /></NavLink>
 
-                <p>0</p>
-                
+                {/* <img className="carrito" src="./carrito.png" alt="" /> */}
+
+                <p>{unitsProds() >= 1 ? unitsProds()  : null}</p>
+
+                {/* <p>{cantCart}</p> */}
+
             </div>
 
         </>

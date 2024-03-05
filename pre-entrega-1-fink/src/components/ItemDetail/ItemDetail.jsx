@@ -1,16 +1,50 @@
-import React from 'react'
+import React, { useState, useContext } from 'react'
 import Contador from '../Count/ItemCount'
+import { Link } from 'react-router-dom'
+import { CartContext } from '../../context/CartContext'
 
-const ItemDetail = ({articulo}) => {
+const ItemDetail = ({ articulo }) => {
+
+
+
+    const {addCart} = useContext(CartContext)
+
+    const [cart, setCart] = useState(false)
+
+    const guardar = (count) => {
+
+
+        setCart(true)
+
+        addCart(articulo,count)
+
+
+        // console.log(count);
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
     return (
         <div>
             <h2>{articulo.nombre}</h2>
-            <img src={articulo.img} alt={articulo.nombre}/>
+            <img src={articulo.img} alt={articulo.nombre} />
             <p>{articulo.detalle}</p>
             <p>${articulo.precio}</p>
-            <p>{articulo.stock}</p>
+            <p>Stock: {articulo.stock}</p>
 
-            <Contador inicial={1} stock = {articulo.stock} />
+            {cart ? <Link to={'/cart'}>Ver Carrito</Link> : <Contador inicial={1} stock={articulo.stock} guardar={guardar} />}
+
+
 
         </div>
     )

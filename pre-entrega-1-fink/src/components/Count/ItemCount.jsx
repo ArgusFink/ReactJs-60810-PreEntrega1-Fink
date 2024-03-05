@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
 
-const Contador = ({inicial, stock}) => {
+const Contador = ({inicial, stock, guardar}) => {
 
     const [contador, setContador] = useState(1)
 
     const agregar = () => {
+
+        guardar(contador)
 
     }
 
@@ -23,11 +25,15 @@ const Contador = ({inicial, stock}) => {
 
     }
 
-    useEffect(
 
-        () => {
-        }, []
-    )
+
+    // useEffect(
+
+    //     () => {
+    //     }, []
+    // )
+
+
 
 
 

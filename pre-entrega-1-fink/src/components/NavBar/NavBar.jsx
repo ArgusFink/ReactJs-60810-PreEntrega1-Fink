@@ -10,7 +10,9 @@ const NavBar = () => {
 
             <div className="nameAndNavBar">
 
-                <img id="logo" src="../public/logo.png" alt="" />
+                {/* <img id="logo" src="../public/logo.png" alt="" /> */}
+
+                <NavLink to={'/'}><img id="logo" src="../public/logo.png" alt="" /></NavLink>
 
 
 

@@ -2,7 +2,7 @@
     {
         "cod": 1,
         "nombre": "Logitech G Saitek Pro Flight Rudder Pedals",        
-        "detalle": "Timón/Pedales para Vuelo y Freno para Simullación de Vuelo, Centrado Automático, Tensión Ajustable, USB, PC - Negro",
+        "detalle": "Timón/Pedales para Vuelo y Freno para Simulación de Vuelo, Centrado Automático, Tensión Ajustable, USB, PC - Negro",
         "precio": 125000,
         "stock": 25,
         "img": "/assets/images/cod1.png",
@@ -119,8 +119,8 @@
     {
         "cod": 14,
         "nombre": "B737 - DOBLE MANDO",        
-        "detalle": "Panel B737Panel completamente equipado con switches y pantallas incluidasMódulos incluidos:- CDU- MCP- 2 EFIS-Palanca de tren de aterrizaje",
-        "precio": 67000,
+        "detalle": "Panel B737Panel completamente equipado con switches y pantallas incluidas. Módulos incluidos:- CDU- MCP- 2 EFIS-Palanca de tren de aterrizaje",
+        "precio": 670000,
         "stock": 2,
         "img": "/assets/images/cod14.png",
         "categoria": "Paneles"
