@@ -7,32 +7,17 @@ const ItemDetail = ({ articulo }) => {
 
 
 
-    const {addCart} = useContext(CartContext)
+    const { addCart } = useContext(CartContext)
 
     const [cart, setCart] = useState(false)
 
     const guardar = (count) => {
 
-
         setCart(true)
 
-        addCart(articulo,count)
-
-
-        // console.log(count);
-
-
-
+        addCart(articulo, count)
 
     }
-
-
-
-
-
-
-
-
 
     return (
         <div>
@@ -42,10 +27,11 @@ const ItemDetail = ({ articulo }) => {
             <p>${articulo.precio}</p>
             <p>Stock: {articulo.stock}</p>
 
-            {cart ? <Link to={'/cart'}>Ver Carrito</Link> : <Contador inicial={1} stock={articulo.stock} guardar={guardar} />}
+            {articulo.stock == 0 ? <strong><p>PRODUCTO SIN STOCK</p></strong>
 
+                :
 
-
+                (cart ? <Link to={'/cart'}>Ver Carrito</Link> : <Contador inicial={1} stock={articulo.stock} guardar={guardar} />)}
         </div>
     )
 }

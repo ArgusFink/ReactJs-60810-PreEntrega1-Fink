@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import './Item.css'
 
 
-const Item = ({articulo}) => {
+const Item = ({ articulo }) => {
     return (
 
         <Link to={`/detalle/${articulo.id}`} >
@@ -13,23 +13,10 @@ const Item = ({articulo}) => {
 
                 <img src={articulo.img} alt={articulo.nombre} />
 
-
-
-
-
-
                 <br /><br /><br />
 
-
-
-
-
-
-
             </div>
-
         </Link>
-
     )
 }
 

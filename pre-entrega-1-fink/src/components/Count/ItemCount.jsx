@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
 
-const Contador = ({inicial, stock, guardar}) => {
+const Contador = ({ inicial, stock, guardar }) => {
 
     const [contador, setContador] = useState(1)
 
     const agregar = () => {
 
         guardar(contador)
-
     }
 
     const restar = () => {
@@ -18,28 +17,15 @@ const Contador = ({inicial, stock, guardar}) => {
     }
 
     const sumar = () => {
-        
-        if (contador < stock){
+
+        if (contador < stock) {
             setContador(contador + 1)
         }
-
     }
-
-
-
-    // useEffect(
-
-    //     () => {
-    //     }, []
-    // )
-
-
-
-
 
     return (
 
-        <div>Contador: {contador}
+        <div>Unidades: {contador}
             <br />
             <button onClick={agregar}>Agregar al carrito</button>
             <br />

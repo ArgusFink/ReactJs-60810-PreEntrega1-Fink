@@ -1,11 +1,10 @@
 import React from 'react'
 import Item from '../Item/Item'
 
-const ItemList = ({articulos}) => {
+const ItemList = ({ articulos }) => {
     return (
 
         <div>
-
             {
                 articulos.map((articulo) => {
 
@@ -14,8 +13,7 @@ const ItemList = ({articulos}) => {
                     )
                 })
             }
-                  
-         </div>
+        </div>
     )
 }
 

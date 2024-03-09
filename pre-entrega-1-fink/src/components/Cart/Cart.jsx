@@ -1,37 +1,22 @@
 import React, { useContext } from 'react'
-
-// import { ThemeContext } from '../../context/ThemeContext'
-
 import { CartContext } from '../../context/CartContext'
-
 import { Link } from 'react-router-dom'
 import CartItem from '../CartItem/CartItem';
 
-
 const Cart = () => {
-
-    // const {cart} = useContext(ThemeContext)
 
     const { cart, delArt, emptyCart, totPrice } = useContext(CartContext)
 
     return (
         <div>
 
-            {/* <p>Ar </p> */}
-
             {cart.length == 0 ?
                 <>
-
                     <p>Carrito Vacío</p>
 
                     <Link to={"/"}> Seguir comprando </Link>
                 </>
                 :
-
-
-                // AGREGAR
-                // {Cart.map(p)}
-
                 <>
                     <br />
                     <h1>Lista de Productos</h1>
@@ -48,27 +33,15 @@ const Cart = () => {
                     <button onClick={emptyCart}>Vaciar Carrito </button>
 
                     <Link to={"/checkout"}>
-                    
+
                         <button>Continuar compra</button>
-                    
+
                     </Link>
-
-
-
-                    {/* <button>Finalizar compra</button> */}
-
-
-
-
                 </>
-
-
-
-
             }
 
         </div >
-    ); 
+    );
 };
 
 export default Cart

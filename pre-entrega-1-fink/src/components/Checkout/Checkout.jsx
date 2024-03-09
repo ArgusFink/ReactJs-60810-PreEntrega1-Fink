@@ -1,12 +1,11 @@
 import React, { useContext, useState } from 'react'
-import { getFirestore, collection, addDoc, updateDoc, doc, getDoc } from 'firebase/firestore'
+import { collection, addDoc, updateDoc, doc, getDoc } from 'firebase/firestore'
 import { CartContext } from '../../context/CartContext'
-
+import { db } from '../../firebase/config'
 
 const Checkout = () => {
 
     const { cart, totPrice, unitsProds, emptyCart } = useContext(CartContext)
-
     const [nombre, setNombre] = useState("")
     const [apellido, setApellido] = useState("")
     const [telefono, setTelefono] = useState("")
@@ -20,18 +19,11 @@ const Checkout = () => {
 
         e.preventDefault()
 
-
-
-
-
-        //Hacer Switch de rrores?
-
         if (!nombre || !apellido || !telefono || !email || !emailConf) {
 
             setFail("Por favor completar los datos solicitados")
 
             return;
-
         }
 
         if (email !== emailConf) {
@@ -39,11 +31,7 @@ const Checkout = () => {
             setFail("El mail de confirmación no coincide")
 
             return;
-
         }
-
-        const db = getFirestore()
-
 
         const order = {
 
@@ -54,15 +42,14 @@ const Checkout = () => {
                 cantidad: articulo.cantidad
 
             })),
- 
-            total: totPrice(), 
+
+            total: totPrice(),
             fecha: new Date(),
             nombre,
             apellido,
             telefono,
             email
         }
-
 
         Promise.all(
 
@@ -75,42 +62,33 @@ const Checkout = () => {
                 const stockActual = artDoc.data().stock
 
                 await updateDoc(artRef, {
-                stock: stockActual - artOrder.cantidad
+                    stock: stockActual - artOrder.cantidad
 
                 })
-
             })
-
         )
             .then(() => {
 
-                 addDoc(collection(db,"orders"),order)
-                 .then((docRef) =>{
-                    setOrderId(docRef.id);
-                    setFail("");
-                    emptyCart();
+                addDoc(collection(db, "orders"), order)
+                    .then((docRef) => {
+                        setOrderId(docRef.id);
+                        setFail("");
+                        emptyCart();
+                    })
 
-                 })
+                    .catch((fail) => {
 
-                 .catch ((fail) => {
-
-                    console.log(fail)
-                    setFail("Error al crear la orden")
-
-                 })
-
+                        console.log(fail)
+                        setFail("Error al crear la orden")
+                    })
             })
 
-            .catch((fail) =>{
+            .catch((fail) => {
 
                 console.log(fail)
                 setFail("No se pudo actualizar el stock")
-
             })
- 
-
     }
-
 
     return (
 
@@ -121,31 +99,17 @@ const Checkout = () => {
             <form onSubmit={directorForm}>
 
                 {cart.map((articulo) =>
-
                     <div key={articulo.articulo.id}>
                         <p>
                             {articulo.articulo.nombre} x {articulo.cantidad}
-
                         </p>
 
-
-
-
-
-
                         <hr />
-
-
-
-
-
 
                     </div>
                 )}
 
-
                 <div>
-
                     <div>
                         <label htmlFor="Nombre">Nombre </label>
                         <input name="Nombre" type='text' onChange={(e) => setNombre(e.target.value)} />
@@ -182,15 +146,9 @@ const Checkout = () => {
                     )}
 
                 </div>
-
-
             </form>
-
         </div>
-
     )
 }
-
-
 
 export default Checkout

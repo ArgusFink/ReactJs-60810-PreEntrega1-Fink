@@ -6,31 +6,9 @@ const CartProvider = ({ children }) => {
 
     const [cart, setCart] = useState([])
 
-
-
-
-
-
-  
-
-
-
-
-
     const addCart = (articulo, cantidad) => {
 
-
-
         const articuloCargado = cart.findIndex(art => art.articulo.id == articulo.id)
-
-
-
-
-
-
-
-        // VER SI HAGO COMPARADOR TERNARIO
-        // if (!articuloCargado) {
 
         if (articuloCargado == -1) {
 
@@ -42,73 +20,34 @@ const CartProvider = ({ children }) => {
 
             reloadCart[articuloCargado].cantidad += cantidad
             setCart(reloadCart)
-
         }
-
-
-
-
-
-
-
-
-        // //SUPUESTO BCKP FUNCIONANDO
-        // //logica duplicado
-        // const productoExistente = cart.find(art => art.articulo.id == articulo.id)
-
-        // if (!productoExistente) {
-        //     //que pasa si no existe
-        // } else {
-        //     //que pasa si existe
-        // }
-
     }
 
     const delArt = (artId) => {
 
         const reloadCart = cart.filter(item => item.articulo.id !== artId)
         setCart(reloadCart)
-
     }
-
 
     const unitsProds = () => {
 
-        const totalUnits = cart.reduce((total,item) => total+item.cantidad,0)
+        const totalUnits = cart.reduce((total, item) => total + item.cantidad, 0)
 
         return totalUnits
-
     }
-
 
     const totPrice = () => {
 
-        const finalPrice = cart.reduce((total,item) => total + (item.articulo.precio * item.cantidad),0)
+        const finalPrice = cart.reduce((total, item) => total + (item.articulo.precio * item.cantidad), 0)
 
         return finalPrice
-
     }
 
 
     const emptyCart = () => {
 
         setCart([])
-
     }
-
-
-
-
-
-    //CONSOLE.LOG
-    console.log(cart)
-
-
-
-
-
-
-
 
     return (
 
@@ -120,23 +59,12 @@ const CartProvider = ({ children }) => {
             unitsProds,
             totPrice,
             emptyCart
-
-
-
-            // //BCKP
-            // cart,
-            //addCart,
-            // total,
-            // cantCart
-
         }} >
 
             {children}
 
         </CartContext.Provider>
-
     )
-
 }
 
 export default CartProvider
