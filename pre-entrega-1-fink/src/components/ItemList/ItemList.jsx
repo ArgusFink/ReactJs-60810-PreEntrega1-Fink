@@ -10,12 +10,12 @@ const ItemList = ({articulos}) => {
                 articulos.map((articulo) => {
 
                     return (
-                        <Item key={articulo.cod} articulo={articulo} />
+                        <Item key={articulo.id} articulo={articulo} />
                     )
                 })
             }
-
-        </div>
+                  
+         </div>
     )
 }
 

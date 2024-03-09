@@ -1,7 +1,7 @@
 .elementCart {
 
-    display: flex;
-    align-items: end;
+    display: inline-flex;
+    align-items: center
 
 }
 
@@ -9,5 +9,6 @@
 .carrito {
         
     width: 100px;
+    
     
 }

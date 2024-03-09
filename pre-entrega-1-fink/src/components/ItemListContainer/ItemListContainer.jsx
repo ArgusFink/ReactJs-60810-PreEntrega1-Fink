@@ -3,6 +3,7 @@ import "./ItemListContainer.css"
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import ItemList from '../ItemList/ItemList';
+import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
 
 
 
@@ -14,34 +15,77 @@ const ItemListContainer = ({ greeting }) => {
 
   useEffect(() => {
 
-    const fetchData = async () => {
 
-      try {
 
-        const response = await fetch("../articulos.json")
-        const data = await response.json()
 
-        if (catCod) {
 
-          const filterArts = data.filter((p) => p.categoria == catCod)
-          setArticulos(filterArts)
+    // const fetchData = async () => {
 
-        } else {
+    //   try {
 
-          setArticulos(data)
+    //     const response = await fetch("../articulos.json")
+    //     const data = await response.json()
 
-        }
+    //     if (catCod) {
 
-      } catch (error) {
+    //       const filterArts = data.filter((p) => p.categoria == catCod)
+    //       setArticulos(filterArts)
 
-      }
+    //     } else {
 
-    }
+    //       setArticulos(data)
 
-    fetchData()
+    //     }
+
+    //   } catch (error) {
+
+    //   }
+
+    // }
+
+    // fetchData()
+
+
+
+
+
+    const db = getFirestore()
+
+    const articles = catCod ? query(collection(db, "articulos"), where("categoria", "==", catCod)) : collection(db, "articulos")
+
+    getDocs(articles) 
+      .then((res) => {
+
+        const nwArticles = res.docs.map((doc) => {
+
+          const data = doc.data()
+
+          return { id: doc.id, ...data }
+
+        })
+
+        setArticulos(nwArticles)
+
+      })
+
+
+
+
+ 
+
+
+
+      .catch((error) => console.log(error))
+
+
+
+
+
+
+
 
   }, [catCod])
-
+ 
 
 
   return (

@@ -19,7 +19,7 @@ const CartItem = ({articulo, delArt}) => {
 
 
       {/* REVISAR 01º 56' 19/02/24 */}
-      <button onClick ={()=> delArt(articulo.articulo.cod)}>Eliminar producto</button>
+      <button onClick ={()=> delArt(articulo.articulo.id)}>Eliminar producto</button>
 
       <br /><br /><br />
 

@@ -13,7 +13,7 @@ const CartWidget = () => {
 
             <div className="elementCart">
 
-                <NavLink to={'/cart'}><img className="carrito" src="../../carrito.png" alt="" /></NavLink>
+                <NavLink to={'/cart'}><img className="carrito" src="../carrito.png" alt="" /></NavLink>
 
                 {/* <img className="carrito" src="./carrito.png" alt="" /> */}
 

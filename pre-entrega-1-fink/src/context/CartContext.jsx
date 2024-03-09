@@ -21,7 +21,7 @@ const CartProvider = ({ children }) => {
 
 
 
-        const articuloCargado = cart.findIndex(art => art.articulo.cod == articulo.cod)
+        const articuloCargado = cart.findIndex(art => art.articulo.id == articulo.id)
 
 
 
@@ -64,9 +64,9 @@ const CartProvider = ({ children }) => {
 
     }
 
-    const delArt = (artCod) => {
+    const delArt = (artId) => {
 
-        const reloadCart = cart.filter(item => item.articulo.cod !== artCod)
+        const reloadCart = cart.filter(item => item.articulo.id !== artId)
         setCart(reloadCart)
 
     }

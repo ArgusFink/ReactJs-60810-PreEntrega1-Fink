@@ -39,13 +39,26 @@ const Cart = () => {
 
                     {cart.map((a) =>
                     (
-                        <CartItem key={a.articulo.cod} articulo={a} delArt={delArt} />
+                        <CartItem key={a.articulo.id} articulo={a} delArt={delArt} />
                     )
                     )}
 
                     <h2>Total: ${totPrice()}</h2>
 
                     <button onClick={emptyCart}>Vaciar Carrito </button>
+
+                    <Link to={"/checkout"}>
+                    
+                        <button>Finalizar compra</button>
+                    
+                    </Link>
+
+
+
+                    {/* <button>Finalizar compra</button> */}
+
+
+
 
                 </>
 
