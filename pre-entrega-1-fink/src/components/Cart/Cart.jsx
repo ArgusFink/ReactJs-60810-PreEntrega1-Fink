@@ -49,7 +49,7 @@ const Cart = () => {
 
                     <Link to={"/checkout"}>
                     
-                        <button>Finalizar compra</button>
+                        <button>Continuar compra</button>
                     
                     </Link>
 

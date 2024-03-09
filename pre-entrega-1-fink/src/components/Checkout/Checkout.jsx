@@ -44,37 +44,40 @@ const Checkout = () => {
 
         const db = getFirestore()
 
+
         const order = {
 
-            articulos: cart.map((articulo) => ({
+            items: cart.map((articulo) => ({
 
                 id: articulo.articulo.id,
                 nombre: articulo.articulo.nombre,
                 cantidad: articulo.cantidad
 
             })),
-            total: totPrice(),
+ 
+            total: totPrice(), 
             fecha: new Date(),
             nombre,
             apellido,
             telefono,
             email
-
         }
 
 
         Promise.all(
 
-            order.articulos.map(async (artOrder) => {
+            order.items.map(async (artOrder) => {
 
-                const artRef = doc(db, "Articulos", artOrder.id);
+                const artRef = doc(db, "articulos", artOrder.id);
 
                 const artDoc = await getDoc(artRef)
 
                 const stockActual = artDoc.data().stock
 
-                await updateDoc(artRef)
+                await updateDoc(artRef, {
                 stock: stockActual - artOrder.cantidad
+
+                })
 
             })
 
