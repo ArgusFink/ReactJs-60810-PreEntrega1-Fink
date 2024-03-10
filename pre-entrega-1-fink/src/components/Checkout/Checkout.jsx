@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react'
 import { collection, addDoc, updateDoc, doc, getDoc } from 'firebase/firestore'
 import { CartContext } from '../../context/CartContext'
 import { db } from '../../firebase/config'
+import "./Checkout.css"
+
 
 const Checkout = () => {
 
@@ -99,12 +101,10 @@ const Checkout = () => {
             <form onSubmit={directorForm}>
 
                 {cart.map((articulo) =>
-                    <div key={articulo.articulo.id}>
-                        <p>
+                    <div key={articulo.articulo.id}  >
+                        <p className="checkOut">
                             {articulo.articulo.nombre} x {articulo.cantidad}
                         </p>
-
-                        <hr />
 
                     </div>
                 )}
@@ -112,17 +112,17 @@ const Checkout = () => {
                 <div>
                     <div>
                         <label htmlFor="Nombre">Nombre </label>
-                        <input name="Nombre" type='text' onChange={(e) => setNombre(e.target.value)} />
+                        <input name="Nombre" type='text' maxLength="25" onChange={(e) => setNombre(e.target.value)} />
                     </div>
 
                     <div>
                         <label htmlFor="Apellido">Apellido </label>
-                        <input name="Apellido" type='text' onChange={(e) => setApellido(e.target.value)} />
+                        <input name="Apellido" type='text' maxLength="25" onChange={(e) => setApellido(e.target.value)} />
                     </div>
 
                     <div>
-                        <label htmlFor="Nombre">Teléfono </label>
-                        <input name="Teléfono" type='text' onChange={(e) => setTelefono(e.target.value)} />
+                        <label htmlFor="Telefono">Teléfono </label>
+                        <input name="Telefono" type='text' required='' pattern='[0-9]+' placeholder='Solo números sin espacios' onChange={(e) => setTelefono(e.target.value)} />
                     </div>
 
                     <div>
@@ -152,3 +152,5 @@ const Checkout = () => {
 }
 
 export default Checkout
+
+
